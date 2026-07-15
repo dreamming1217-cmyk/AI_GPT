@@ -36,30 +36,3 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "assistant", "content": msg}) 
     st.chat_message("assistant").write(msg)
 
-# Streamlit 상단 메뉴/툴바/사이드바/푸터 숨기기
-hide_streamlit_style = """
-<style>
-#MainMenu {visibility: hidden;}
-header {visibility: hidden;}
-footer {visibility: hidden;}
-
-[data-testid="stToolbar"] {display: none;}
-[data-testid="stDecoration"] {display: none;}
-[data-testid="stStatusWidget"] {display: none;}
-[data-testid="collapsedControl"] {display: none;}
-
-section[data-testid="stSidebar"] {
-    display: none !important;
-}
-
-.block-container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-[data-testid="stSidebarCollapsedControl"] {display: none !important;}
-</style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-load_dotenv()

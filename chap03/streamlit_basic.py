@@ -16,7 +16,7 @@ st.title("💬 Chatbot")
 
 # (1) st.session_state에 "messages"가 없으면 초기값을 설정
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "뭐가 궁금하십니까?"}]
 
 # (2) 대화 기록을 출력
 for msg in st.session_state.messages:
@@ -35,3 +35,31 @@ if prompt := st.chat_input():
     msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg}) 
     st.chat_message("assistant").write(msg)
+
+# Streamlit 상단 메뉴/툴바/사이드바/푸터 숨기기
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+[data-testid="stToolbar"] {display: none;}
+[data-testid="stDecoration"] {display: none;}
+[data-testid="stStatusWidget"] {display: none;}
+[data-testid="collapsedControl"] {display: none;}
+
+section[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+[data-testid="stSidebarCollapsedControl"] {display: none !important;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+load_dotenv()

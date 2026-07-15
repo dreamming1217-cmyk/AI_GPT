@@ -16,7 +16,7 @@ st.title("💬 Chatbot")
 
 # (1) st.session_state에 "messages"가 없으면 초기값을 설정
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "뭐가 궁금하십니까?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
 # (2) 대화 기록을 출력
 for msg in st.session_state.messages:
@@ -35,4 +35,3 @@ if prompt := st.chat_input():
     msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg}) 
     st.chat_message("assistant").write(msg)
-

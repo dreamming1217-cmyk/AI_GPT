@@ -3,6 +3,48 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
+# 상단의 메뉴 없애기
+# streamlit_basic.py
+import streamlit as st
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+# Streamlit 페이지 설정: 반드시 가장 위쪽 Streamlit 명령이어야 함
+st.set_page_config(
+    page_title="Chatbot",
+    page_icon="💬",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+# Streamlit 상단 메뉴/툴바/사이드바/푸터 숨기기
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+[data-testid="stToolbar"] {display: none;}
+[data-testid="stDecoration"] {display: none;}
+[data-testid="stStatusWidget"] {display: none;}
+[data-testid="collapsedControl"] {display: none;}
+
+section[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+[data-testid="stSidebarCollapsedControl"] {display: none !important;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+load_dotenv()
 
 load_dotenv()
 

@@ -3,6 +3,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
 # (0) 사이드바에서 api_key 입력하는 부분 
